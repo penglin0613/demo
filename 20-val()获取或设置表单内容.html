@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>标题</title>
+  <script src="jquery-1.12.4.js"></script>
+  <script>
+    $(function () {
+      $('#btn').click(function () {
+        //获取文本框中的文本。
+        //原生js用value属性来获取表单元素的内容。
+        //console.log($('#txt')[0].value);
+
+
+        //原生js用value属性来设置表单元素的内容。
+        //$('#txt')[0].value = '设置的内容';
+
+
+        //jQuery中用val()方法来获取内容。
+        //console.log($('#txt').val());
+
+
+        //jQuery中用val()方法来设置内容。
+        //$('#txt').val('我是设置的内容');
+
+      });
+
+
+
+      //案例，模拟京东搜索框
+      //文本框获取焦点事件
+      $('#txt').focus(function () {
+        //如果文本框中的内容是默认值，获取焦点就要清空
+        if($(this).val() == "请输入内容"){
+          $(this).val("");
+        }
+      });
+
+      //文本框失去焦点事件
+      $('#txt').blur(function () {
+        //如果文本框中的内容是空的时候，失去焦点就要还原为默认值
+        if($(this).val() == ""){
+          $(this).val("请输入内容");
+        }
+      });
+
+
+
+    });
+  </script>
+</head>
+<body>
+<input type="button" value="按钮" id="btn"/> <br/><br/>
+<input type="text" id="txt" value="请输入内容"/>
+</body>
+</html>

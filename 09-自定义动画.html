@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>标题</title>
+  <style>
+    div {
+      width: 100px;
+      height: 100px;
+      background-color: red;
+      position: absolute;
+      left: 0px;
+    }
+    #div1 {
+      top:50px;
+    }
+    #div2 {
+      top: 170px;
+    }
+  </style>
+  <script src="jquery-1.12.4.js"></script>
+  <script src="jquery.color.js"></script>
+  <script>
+    $(function () {
+
+      //获取lr800按钮，设置单击事件
+      $('#lr800').click(function () {
+        $('#div1').animate(
+                //第一个参数，是一个对象，就是写你要动画的属性
+                //jQuery的主要功能里面没有改变背景色的，要动画改变背景色就要用到插件。
+                {left:800,height:200,width:200,opacity:0.2,backgroundColor:'green'},
+                //第二个参数，是动画执行的时间
+                3000,
+                //第三个参数字符串  easing:执行效果： 默认为swing（缓动）  可以是linear（匀速）
+                'swing'
+                //第四个参数，表示动画执行完毕后的回调函数。
+//                function () {
+//                  alert('哈哈');
+//                }
+        )
+
+
+//        $('#div2').animate({
+//          left:800
+//        },3000,'linear');
+
+
+      });
+
+
+    });
+  </script>
+</head>
+<body>
+<input type="button" value="从左到右800" id="lr800"/>
+<div id="div1"></div>
+<div id="div2"></div>
+</body>
+</html>

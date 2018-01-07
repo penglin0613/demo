@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>标题</title>
+  <style>
+    #div1{
+      width: 300px;
+      height: 300px;
+      border: 1px solid red;
+    }
+  </style>
+  <script src="jquery-1.12.4.js"></script>
+  <script>
+    $(function () {
+       //1.动态的创建元素
+
+      //原生js中动态的创建元素：document.write();   innerHTML();   document.createElement();
+
+
+      //2.jQuery动态的创建元素
+      //html();    $();
+
+
+      //3.html();
+      $('#btnHtml1').click(function () {
+        //a.html(); 如果不给参数，是获取内容(子代和后代都会获取)。
+        //console.log($('#div1').html());
+
+        //b.html()；如果给了参数，就是设置内容。
+        //如果原来有内容，会把原来的内容给覆盖掉。
+        //$('#div1').html('呵呵');
+        //如果设置的内容中包含了标签，会把标签给解析出来。
+        //$('#div1').html('呵呵<a href="https://www.baidu.com">百度一下</a>');
+
+      });
+
+
+      //4.$();
+      $('#btn1').click(function () {
+        var $a = $('<a href="http://www.sina.com.cn">新浪</a>');
+
+        //console.log($a);
+
+        $('#div1').append($a);
+
+      });
+
+
+    });
+  </script>
+</head>
+<body>
+<input type="button" value="html()" id="btnHtml1"/>
+<input type="button" value="$()" id="btn1"/> <br/><br/>
+<div id="div1">
+  <p>p1
+    <span>span1</span>
+  </p>
+</div>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>标题</title>
+  <style>
+    #div1 {
+      width: 400px;
+      height: 200px;
+      border: 1px solid red;
+    }
+  </style>
+  <script src="jquery-1.12.4.js"></script>
+  <script>
+    $(function () {
+       //jQuery克隆节点:
+       //clone();  //把克隆的元素里面的所有的都克隆
+       //克隆出来的元素，只存在于内存中，如果要在页面上显示，就要主动的去追加。
+
+
+      //jQuery中的克隆的参数，如果是false，就不会克隆事件；如果是true的话，就会把事件也一起克隆过来。
+      //如果不写参数，默认就是false。
+
+      $('p').click(function () {
+        alert('我被单击了，我是一个p');
+      });
+
+      $('#clone').click(function () {
+         var divNew = $('#div1').clone(true);
+        divNew.attr('id','div2');
+         //console.log(divNew);
+        $('body').append(divNew);
+
+      });
+
+
+
+    });
+  </script>
+</head>
+<body>
+<input type="button" value="克隆" id="clone"/>
+<div id="div1">
+  <span>span1</span>
+  <p>p1</p>
+</div>
+<br/><br/>
+</body>
+</html>

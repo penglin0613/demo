@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>动画-案例《轮播图》</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .slider {
+            height: 340px;
+            width: 790px;
+            margin: 100px auto;
+            position: relative;
+        }
+
+        .slider li {
+            position: absolute;
+            display: none;
+        }
+
+        .slider li:first-child {
+            display: block;
+        }
+
+
+        .arrow {
+            display: none;
+        }
+
+        .slider:hover .arrow {
+            display: block;
+        }
+
+        .arrow-left,
+        .arrow-right {
+            font-family: "SimSun", "宋体";
+            width: 30px;
+            height: 60px;
+            background-color: rgba(0, 0, 0, 0.1);
+            position: absolute;
+            top: 50%;
+            margin-top: -30px;
+            cursor: pointer;
+            text-align: center;
+            line-height: 60px;
+            color: #fff;
+            font-weight: 700;
+            font-size: 30px;
+        }
+
+        .arrow-left:hover,
+        .arrow-right:hover {
+            background-color: rgba(0, 0, 0, .5);
+        }
+
+        .arrow-left {
+            left: 0;
+        }
+
+        .arrow-right {
+            right: 0;
+        }
+
+    </style>
+</head>
+<body>
+<div class="slider">
+    <!--图片容器  8图 -->
+    <ul>
+        <li><a href="#"><img src="images/jd/1.jpg" alt=""></a></li>
+        <li><a href="#"><img src="images/jd/2.jpg" alt=""></a></li>
+        <li><a href="#"><img src="images/jd/3.jpg" alt=""></a></li>
+        <li><a href="#"><img src="images/jd/4.jpg" alt=""></a></li>
+        <li><a href="#"><img src="images/jd/5.jpg" alt=""></a></li>
+        <li><a href="#"><img src="images/jd/6.jpg" alt=""></a></li>
+        <li><a href="#"><img src="images/jd/7.jpg" alt=""></a></li>
+        <li><a href="#"><img src="images/jd/8.jpg" alt=""></a></li>
+    </ul>
+    <!--箭头-->
+    <div class="arrow">
+        <span class="arrow-left">&lt;</span>
+        <span class="arrow-right">&gt;</span>
+    </div>
+</div>
+<script src="jquery-1.12.4.js"></script>
+<script>
+
+    //--第一种思路做法----
+//  $(function () {
+//      //需求：
+//      //1.点击右边的按钮，淡入效果显示下一张，淡出效果隐藏当前这一张。
+//      //2.点击左边的按钮，淡入效果显示上一张，淡出效果隐藏当前这一张。
+//
+//      var idx = 0;
+//
+//      //1.获取右边按钮，给他设置单击事件
+//      $('.arrow>.arrow-right').click(function () {
+//          $('.slider>ul>li').eq(idx).fadeOut(500);
+//          idx++;
+//          //如果到了最后一张，再点击右边的按钮，那索引就到了8，那就应该把索引改成0，让他显示第1张。
+//          if(idx == 8 ){  //$(.slider>ul>li).length
+//              idx = 0;
+//          }
+//
+//          $('.slider>ul>li').eq(idx).fadeIn(500);
+//      });
+//
+//
+//
+//      //2.获取左边按钮，给他设置单击事件
+//      $('.arrow>.arrow-left').click(function () {
+//          $('.slider>ul>li').eq(idx).fadeOut(500);
+//
+//          idx--;
+//          if(idx == -1){
+//              idx = 7;
+//          }
+//
+//          $('.slider>ul>li').eq(idx).fadeIn(500);
+//      });
+//  });
+
+
+
+
+    //第二种思路做法
+    $(function () {
+        var idx = 0;
+
+        //右边按钮
+        $('.arrow>.arrow-right').click(function () {
+            idx++;
+            if(idx == 8){
+                idx = 0;
+            }
+
+            $('.slider>ul>li').eq(idx).fadeIn(500).siblings().fadeOut(500);
+        });
+
+
+        //左边的按钮
+        $('.arrow>.arrow-left').click(function () {
+            idx--;
+            if(idx < 0){
+                idx = 7;
+            }
+            $('.slider>ul>li').eq(idx).fadeIn(500).siblings().fadeOut(500);
+        });
+
+
+    });
+</script>
+</body>
+</html>

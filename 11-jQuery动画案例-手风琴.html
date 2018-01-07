@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>动画-案例《手风琴》</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style: none;
+            width: 2400px;
+        }
+
+        #box {
+            width: 1200px;
+            height: 400px;
+            border: 2px solid red;
+            margin: 100px auto;
+            overflow: hidden;
+        }
+
+        #box li {
+            width: 240px;
+            height: 400px;
+            float: left;
+        }
+
+    </style>
+</head>
+<body>
+<div id="box">
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+
+</div>
+<script src="jquery-1.12.4.js"></script>
+<script>
+  $(function () {
+     //1.给每一个li标签初始化图片
+      //这里的隐式迭代，让每一个li都设置成了同样的图片，不行。
+      //$('#box li').html('<img src="images/collapse/1.jpg" alt="">')
+
+
+      var $lis = $('#box li');
+      for(var i = 0 ; i < $lis.length; i++){
+        //$lis[i] 是一个dom对象。
+      	$lis[i].innerHTML = '<img src="images/collapse/'+(i+1)+'.jpg" alt="">'
+      }
+
+
+      //2.给这些li标签设置鼠标移入事件。
+      $lis.mouseenter(function () {
+          $(this).stop().animate({width:800},500).siblings('li').stop().animate({width:100},500);
+      });
+
+      //3.鼠标移出box大盒子后，所有的li标签要还原宽度为240
+      $('#box').mouseleave(function () {
+          $lis.stop().animate({width:240},500);
+      });
+
+  });
+</script>
+
+</body>
+</html>

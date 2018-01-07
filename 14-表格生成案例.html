@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+            border: 1px solid #c0c0c0;
+        }
+
+        th,
+        td {
+            border: 1px solid #d0d0d0;
+            color: #404060;
+            padding: 10px;
+        }
+
+        th {
+            background-color: #09c;
+            font: bold 16px "微软雅黑";
+            color: #fff;
+        }
+
+        td {
+            font: 14px "微软雅黑";
+        }
+
+        tbody tr {
+            background-color: #f0f0f0;
+        }
+
+        tbody tr:hover {
+            cursor: pointer;
+            background-color: #fafafa;
+        }
+    </style>
+    <script src="jquery-1.12.4.js"></script>
+    <script>
+        // 模拟从后台拿到的数据
+        var data = [{
+            name: "传智播客",
+            url: "http://www.itcast.cn",
+            type: "IT最强培训机构"
+        }, {
+            name: "黑马程序员",
+            url: "http://www.itheima.com",
+            type: "大学生IT培训机构"
+        }, {
+            name: "传智前端学院",
+            url: "http://web.itcast.cn",
+            type: "前端的黄埔军校"
+        }];
+
+
+        //入口函数
+        $(function () {
+
+            //第一种，使用$();来创建元素实现效果。
+            //找到  获取数据 那个按钮，设置单击事件
+            // $('#j_btnGetData').click(function () {
+//
+            //     //data数组有多少个元素，就创建多少个tr
+            //     for(var i = 0 ; i < data.length; i++){
+            //         var $tr = $('<tr><td>'+data[i].name+'</td><td>'+data[i].url+'</td><td>'+data[i].type+'</td></tr>');
+            //         //把生成的tr追加到tbody中
+            //         $('#j_tbData').append($tr);
+            //     }
+            // });
+
+
+
+            //第二种，使用html();来创建元素实现效果。
+            $('#j_btnGetData').click(function () {
+
+                //用来保存带有tr标签的字符串。
+                var list = [];
+
+                //1.data数组有多少个元素，就创建多少个tr
+                for(var i = 0 ; i < data.length; i++){
+                	list.push('<tr><td>'+data[i].name+'</td><td>'+data[i].url+'</td><td>'+data[i].type+'</td></tr>');
+                }
+
+                //2.把list里面所有的元素，连接成一个新的字符串，通过html()交给tbody。
+                $('#j_tbData').html( list.join() );
+
+            });
+        })
+
+
+
+
+
+    </script>
+</head>
+
+<body>
+<input type="button" value="获取数据" id="j_btnGetData" />
+<table>
+    <thead>
+    <tr>
+        <th>标题</th>
+        <th>地址</th>
+        <th>说明</th>
+    </tr>
+    </thead>
+    <tbody id="j_tbData">
+
+    </tbody>
+</table>
+</body>
+
+</html>

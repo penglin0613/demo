@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>标题</title>
+  <style>
+    div {
+      width: 200px;
+      height: 200px;
+      background-color: red;
+      /*display: none;*/
+    }
+  </style>
+  <script src="jquery-1.12.4.js"></script>
+  <script>
+    $(function () {
+      //1.滑入（向上滑入进去）
+      $('#slideUp').click(function () {
+        //如果不给参数，就相当于给了一个'normal'字符串
+        $('#div1').slideUp();
+        //如果给参数，也可以给时间毫秒数，也可以给有意义的字符串。
+        // $('#div1').slideUp(1000, function () {
+        //   alert('动画做完了');
+        // });
+      });
+
+
+      //2.滑出（滑出来）
+      $('#slideDown').click(function () {
+        $('#div1').slideDown();
+      });
+
+
+      //3.切换
+      $('#slideToggle').click(function () {
+        $('#div1').slideToggle(1000);
+      });
+
+
+
+    });
+  </script>
+</head>
+<body>
+<input type="button" value="滑入" id="slideUp"/>
+<input type="button" value="滑出" id="slideDown"/>
+<input type="button" value="切换" id="slideToggle"/><br/><br/>
+<div id="div1"></div>
+</body>
+</html>

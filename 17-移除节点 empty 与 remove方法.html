@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>标题</title>
+  <script src="jquery-1.12.4.js"></script>
+  <script>
+    $(function () {
+      //1.移除节点，删除节点。
+
+      $('#btn').click(function () {
+        //a.  html("");  //清空 一般不用。会有内存泄漏的问题
+        // $('#ul1').html("");
+
+
+        //b.  empty(); //一般的使用empty()方法来清空某一个元素的内容。
+        // $('#ul1').empty();
+
+
+        //c. remove();  //自己杀掉自己。
+        //$('#li3').remove();
+
+        $('#ul1').remove(); //整个ul都移除掉了。
+
+
+      });
+
+
+
+    });
+  </script>
+</head>
+<body>
+<input type="button" value="按钮" id="btn"/>
+<ul id="ul1">
+  <li>我是第1个li标签</li>
+  <li>我是第2个li标签</li>
+  <li id="li3">我是第3个li标签</li>
+  <li>我是第4个li标签</li>
+  <li>我是第5个li标签</li>
+</ul>
+</body>
+</html>
